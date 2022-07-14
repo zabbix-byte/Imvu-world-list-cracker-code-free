@@ -23,7 +23,7 @@ Fetures:
 - Threads handling
 - Automatic proxy generator
 - Automatic handling of the proxys
-- Account finded info handler
+- Account info handler
 
 <hr>
 
